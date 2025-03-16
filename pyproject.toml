@@ -1,0 +1,43 @@
+[tool.poetry]
+name = "email-rules-engine"
+version = "1.0.0"
+description = "A production-grade email rules engine that allows users to create and manage rules for processing emails"
+authors = ["Your Name <your.email@example.com>"]
+readme = "README.md"
+license = "MIT"
+packages = [{include = "app"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+fastapi = "0.104.1"
+uvicorn = "0.23.2"
+pydantic = "2.4.2"
+sqlalchemy = "2.0.23"
+alembic = "1.12.1"
+psycopg2-binary = "2.9.9"
+python-dotenv = "1.0.0"
+python-jose = "3.3.0"
+passlib = "1.7.4"
+python-multipart = "0.0.6"
+email-validator = "2.1.0"
+pydantic-settings = "2.0.3"
+tenacity = "8.2.3"
+google-api-python-client = "2.108.0"
+google-auth-oauthlib = "1.1.0"
+google-auth-httplib2 = "0.1.1"
+requests = "2.31.0"
+beautifulsoup4 = "4.12.2"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "7.4.3"
+httpx = "0.25.1"
+pytest-asyncio = "0.21.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_functions = "test_*" 

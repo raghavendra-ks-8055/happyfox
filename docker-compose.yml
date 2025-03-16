@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+      - poetry_cache:/root/.cache/pypoetry
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/email_rules
+      - SECRET_KEY=${SECRET_KEY:-supersecretkey}
+      - ENVIRONMENT=development
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+  db:
+    image: postgres:15
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=email_rules
+    ports:
+      - "5432:5432"
+
+volumes:
+  postgres_data:
+  poetry_cache:
