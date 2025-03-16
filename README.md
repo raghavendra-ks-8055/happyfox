@@ -67,7 +67,7 @@ A production-grade email rules engine that allows users to create and manage rul
 1. **Clone the repository**
    ```bash
    git clone <repository-url>
-   cd email-rules-engine
+   cd happyfox
    ```
 
 2. **Install dependencies**
